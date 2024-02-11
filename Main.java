@@ -17,10 +17,10 @@ public class Main {// Cinema
         */
     }
 
-    /*public static boolean Occupied() {
+    public static boolean Occupied() {
         if (ArrayEspectadoresBooleano[Math.random() * 8][Math.random() * 9] = false) {
             ArrayEspectadores[Math.random() * numero] = x;
             ArrayEspectadoresBooleano[Math.random() * numero] = true;
         }
-    }*/
+    }
 }
