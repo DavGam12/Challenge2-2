@@ -11,26 +11,22 @@ public class CinemaRoom {
         return _entrycost;
     }
 
-    public CinemaRoom(float pEntrycost){
-        setEntrycost(pEntrycost);
-    }
-
-    private boolean _backseats[][] = new boolean[8][9];
-    private void setBackseats(boolean pBackseats[][]){_backseats = pBackseats;}
+    private boolean[][] _backseats = new boolean[8][9];
+    private void setBackseats(boolean[][] pBackseats){_backseats = pBackseats;}
     public boolean[][] getBackseats(){return _backseats;}
     
-    private String _frontseats[][] = new String[8][9];
-    private void setFrontseats(String pFrontseats[][]){_frontseats = pFrontseats;}
+    private String[][] _frontseats = new String[8][9];
+    private void setFrontseats(String[][] pFrontseats){_frontseats = pFrontseats;}
     public String[][] getFrontseats(){return _frontseats;}
 
-    public void BackseatsFill(){
+    public String[][] FrontseatsFill(){
         String[][] strJokerArray = new String[8][9];
         for (int iCount = 7; iCount>=0; iCount--){
             for (int jCount = 0; jCount<9; jCount++){
-                strJokerArray[iCount][Switch((char) jCount)] = String.valueOf((iCount + Switch((char) jCount)));
-                setFrontseats(strJokerArray);
+                strJokerArray[iCount][jCount] = iCount+1 + String.valueOf(Switch((char) jCount)) + " ";
             }
         }
+        return strJokerArray;
     }
     private char Switch(char iMainNum){
         switch (iMainNum){
@@ -45,5 +41,21 @@ public class CinemaRoom {
             case 8->iMainNum = 'I';// I
         }
         return iMainNum;
+    }
+
+    public int SeatsList(){
+        for (int i = 7; i>=0; i--){
+            for (int j = 0; j<9; j++){
+                System.out.printf("%s", FrontseatsFill()[i][j]);
+            }
+            System.out.println();
+        }
+
+        return 0;
+    }
+
+
+    public CinemaRoom(int a){
+        setEntrycost((float) a);
     }
 }
