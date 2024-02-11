@@ -1,6 +1,7 @@
 package Challenge2.Sala_De_Cine;
 
 public class Film {
+    private final static int[] _agrerestriction = {3, 7, 12, 16, 18};
     private String _title;
     private void setTitle(String pTitle){
         _title = pTitle;
@@ -33,10 +34,21 @@ public class Film {
         return _minimumage;
     }
 
-    public Film(String pTitle, String pDirector, int pDuration, int pMinimumage){
+    public Film(String pTitle, String pDirector, int pDuration){
         setTitle(pTitle);
         setDirector(pDirector);
         setDuration(pDuration);
-        setMinimumage(pMinimumage);
+        setMinimumage(_agrerestriction[(int) (Math.random()*5)]);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "_title='" + _title + '\'' +
+                ", _director='" + _director + '\'' +
+                ", _duration=" + _duration +
+                ", _minimumage=" + _minimumage +
+                '}';
     }
 }

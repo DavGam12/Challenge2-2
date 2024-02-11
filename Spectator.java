@@ -15,4 +15,5 @@ public class Spectator {
     private void setMoney(float pMoney){_money = pMoney;}
     public float getMoney(){return _money;}
 
+
 }

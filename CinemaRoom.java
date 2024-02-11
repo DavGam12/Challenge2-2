@@ -3,10 +3,8 @@ package Challenge2.Sala_De_Cine;
 public class CinemaRoom {
     private Film _currentfilm;
 
-    private float _entrycost;
-    private void setEntrycost(float pEntrycost){
-        _entrycost = pEntrycost;
-    }
+    private final static float _entrycost = 11.95F;
+    /*private void setEntrycost(float pEntrycost){_entrycost = pEntrycost;}*/
     public float getEntrycost(){
         return _entrycost;
     }
@@ -16,9 +14,9 @@ public class CinemaRoom {
     public boolean[][] getBackseats(){return _backseats;}
 
     private int _rndspectators = (int) (Math.random()*72);
-    private void setRndspectators(int pRndspectators){ _rndspectators = pRndspectators;}
+    private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
     public int getRndspectators(){return _rndspectators;}
-
+    
     private String[][] _frontseats = new String[8][9];
     private void setFrontseats(String[][] pFrontseats){_frontseats = pFrontseats;}
     public String[][] getFrontseats(){return _frontseats;}
@@ -59,24 +57,28 @@ public class CinemaRoom {
     }
 
     public boolean[][] FillSeats(){
-        for (int iCountNum = 0; iCountNum <_rndspectators; iCountNum++){
+        for (int iCountNum = 0; iCountNum<_rndspectators; iCountNum++){
             int iPos;
             int jPos;
 
             boolean bOccupied;
             do{
-                iPos = (int) (Math.random()*8);
-                jPos = (int) (Math.random()*9);
+                iPos = (int) (Math.random() * 8);
+                jPos = (int) (Math.random() * 9);
 
                 bOccupied = OccupiedSeat(iPos, jPos);
 
-                if (!bOccupied){
+
+                if (!bOccupied) {
                     _backseats[iPos][jPos] = true;
                 }
-            }while (bOccupied);
+
+            } while (bOccupied);
+
         }
         return _backseats;
     }
+
     public int BackList(){
         for (int iCount = 0; iCount<8; iCount++){
             for (int jCount = 0; jCount<9; jCount++){
@@ -87,12 +89,13 @@ public class CinemaRoom {
 
         return 0;
     }
+
     private boolean OccupiedSeat(int iPos, int jPos){
         return _backseats[iPos][jPos];
     }
 
-    public CinemaRoom(int a){
-        setEntrycost((float) a);
+
+    public CinemaRoom(){
         setFrontseats(FrontseatsFill());
         setBackseats(FillSeats());
     }
