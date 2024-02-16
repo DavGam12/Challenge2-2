@@ -44,11 +44,9 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
-                "_title='" + _title + '\'' +
-                ", _director='" + _director + '\'' +
-                ", _duration=" + _duration +
-                ", _minimumage=" + _minimumage +
-                '}';
+        return "Film: " + _title +
+                ", Director: '" + _director +
+                ", Duration: " + _duration +
+                " and Minimum Age: " + _minimumage;
     }
 }

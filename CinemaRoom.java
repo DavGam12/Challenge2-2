@@ -1,10 +1,21 @@
 package Challenge2.Sala_De_Cine;
 
 public class CinemaRoom {
-    private Film _currentfilm;
+
+    public static Film mainFilm = new Film("Pinocchio", "Guillermo del Toro", (int) (Math.round(100+Math.random()*200)));
+
+
+    private Spectator[] SpectatorsCreation(){
+        Spectator[] mainSpectatorArray = new Spectator[_rndspectators];
+        for (int iCount = 0; iCount<_rndspectators; iCount++){
+             mainSpectatorArray[iCount] = new Spectator(Spectator.SPECTATOR_NAMES[(int) (Math.round(Math.random()*20))], (int) (2+Math.random()*100), (float) (Math.random()*100));
+        }
+
+        return mainSpectatorArray;
+    }
 
     private final static float _entrycost = 11.95F;
-    /*private void setEntrycost(float pEntrycost){_entrycost = pEntrycost;}*/
+
     public float getEntrycost(){
         return _entrycost;
     }
@@ -16,7 +27,7 @@ public class CinemaRoom {
     private int _rndspectators = (int) (Math.random()*72);
     private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
     public int getRndspectators(){return _rndspectators;}
-    
+
     private String[][] _frontseats = new String[8][9];
     private void setFrontseats(String[][] pFrontseats){_frontseats = pFrontseats;}
     public String[][] getFrontseats(){return _frontseats;}
@@ -45,55 +56,59 @@ public class CinemaRoom {
         return iMainNum;
     }
 
-    public int SeatsList(){
-        for (int iCount = 7; iCount>=0; iCount--){
-            for (int jCount = 0; jCount<9; jCount++){
-                System.out.printf("%s", FrontseatsFill()[iCount][jCount]);
-            }
-            System.out.println();
-        }
-
-        return 0;
-    }
-
     public boolean[][] FillSeats(){
+        Spectator[] mainSpectatorArray = SpectatorsCreation();
+
+        int iTestCount = 0;
+
         for (int iCountNum = 0; iCountNum<_rndspectators; iCountNum++){
             int iPos;
             int jPos;
 
             boolean bOccupied;
-            do{
-                iPos = (int) (Math.random() * 8);
-                jPos = (int) (Math.random() * 9);
+            boolean bAge = mainSpectatorArray[iCountNum].getAge()<mainFilm.getMinimumage();// bAge = true  si el espectador no cumple el mínimo de edad
+            boolean bMoney = mainSpectatorArray[iCountNum].getMoney()<getEntrycost();// bMoney = true  si el espectador no tiene suficiente dinero
 
-                bOccupied = OccupiedSeat(iPos, jPos);
+            if (!bAge && !bMoney) {
+                do {
+                    iPos = (int) (Math.random() * 8);
+                    jPos = (int) (Math.random() * 9);
+
+                    bOccupied = OccupiedSeat(iPos, jPos);
 
 
-                if (!bOccupied) {
-                    _backseats[iPos][jPos] = true;
-                }
+                    if (!bOccupied) {
+                        _backseats[iPos][jPos] = true;
+                    }
 
-            } while (bOccupied);
+                } while (bOccupied);
+            }
 
+            else if (bAge && bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement and they didn't have enough money to buy the entry\n"); iTestCount++;}
+            else if (bAge) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement\n"); iTestCount++;}
+            else if (bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't have enough money to buy the entry\n"); iTestCount++;}
         }
         return _backseats;
     }
 
-    public int BackList(){
+    public void BackList(){
+
         for (int iCount = 0; iCount<8; iCount++){
             for (int jCount = 0; jCount<9; jCount++){
-                System.out.printf("%s ", _backseats[iCount][jCount]);
+
+                if (!_backseats[iCount][jCount]){
+                    System.out.printf("%s", "Oc ");
+                } else {System.out.printf("%s", _frontseats[iCount][jCount]);}
+
             }
             System.out.println();
         }
 
-        return 0;
     }
 
     private boolean OccupiedSeat(int iPos, int jPos){
         return _backseats[iPos][jPos];
     }
-
 
     public CinemaRoom(){
         setFrontseats(FrontseatsFill());
