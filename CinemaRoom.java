@@ -22,15 +22,15 @@ public class CinemaRoom {
 
     private boolean[][] _backseats = new boolean[8][9];
     private void setBackseats(boolean[][] pBackseats){_backseats = pBackseats;}
-    public boolean[][] getBackseats(){return _backseats;}
+    //public boolean[][] getBackseats(){return _backseats;}
 
-    private int _rndspectators = (int) (Math.random()*72);
-    private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
-    public int getRndspectators(){return _rndspectators;}
+    private final int _rndspectators = (int) (Math.random()*72);
+    //private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
+    //public int getRndspectators(){return _rndspectators;}
 
     private String[][] _frontseats = new String[8][9];
     private void setFrontseats(String[][] pFrontseats){_frontseats = pFrontseats;}
-    public String[][] getFrontseats(){return _frontseats;}
+    //public String[][] getFrontseats(){return _frontseats;}
 
     public String[][] FrontseatsFill(){
         String[][] strJokerArray = new String[8][9];
@@ -43,15 +43,15 @@ public class CinemaRoom {
     }
     private char Switch(char iMainNum){
         switch (iMainNum){
-            case 0->iMainNum = 'A';// A
-            case 1->iMainNum = 'B';// B
-            case 2->iMainNum = 'C';// C
-            case 3->iMainNum = 'D';// D
-            case 4->iMainNum = 'E';// E
-            case 5->iMainNum = 'F';// F
-            case 6->iMainNum = 'G';// G
-            case 7->iMainNum = 'H';// H
-            case 8->iMainNum = 'I';// I
+            case 0: iMainNum = 'A'; break;// A
+            case 1: iMainNum = 'B'; break;// B
+            case 2: iMainNum = 'C'; break;// C
+            case 3: iMainNum = 'D'; break;// D
+            case 4: iMainNum = 'E'; break;// E
+            case 5: iMainNum = 'F'; break;// F
+            case 6: iMainNum = 'G'; break;// G
+            case 7: iMainNum = 'H'; break;// H
+            case 8: iMainNum = 'I'; break;// I
         }
         return iMainNum;
     }
