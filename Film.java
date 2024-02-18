@@ -6,25 +6,25 @@ public class Film {
     private void setTitle(String pTitle){
         _title = pTitle;
     }
-    public String getTitle(){
+    /*public String getTitle(){
         return _title;
-    }
+    }*/
 
     private String _director;
     private void setDirector(String pDirector){
         _director = pDirector;
     }
-    public String getDirector(){
+    /*public String getDirector(){
         return _director;
-    }
+    }*/
 
     private int _duration; // in mins
     private void setDuration(int pDuration){
         _duration = pDuration;
     }
-    public int getDuration(){
+    /*public int getDuration(){
         return _duration;
-    }
+    }*/
 
     private int _minimumage;
     private void setMinimumage(int pAge){
