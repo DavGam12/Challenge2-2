@@ -13,7 +13,7 @@ public class Spectator {
     private void setName(String pName){
         _name = pName;
     }
-    public String getName(){return _name;}
+    //public String getName(){return _name;}
 
     private int _age;
     private void setAge(int pAge){_age = pAge;}
