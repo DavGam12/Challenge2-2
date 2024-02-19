@@ -1,7 +1,7 @@
 package Challenge2.Sala_De_Cine;
 
 public class Spectator {
-    public final static String[] SPECTATOR_NAMES =
+    protected final static String[] SPECTATOR_NAMES =
             {"David", "Alejandra", "Patricia",
             "Antón", "Roberto", "Diego",
             "Kit Connor", "Nanami", "Benji",
