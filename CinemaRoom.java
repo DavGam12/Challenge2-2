@@ -22,15 +22,15 @@ public class CinemaRoom {
 
     private boolean[][] _backseats = new boolean[8][9];
     private void setBackseats(boolean[][] pBackseats){_backseats = pBackseats;}
-    //public boolean[][] getBackseats(){return _backseats;}
+    // public boolean[][] getBackseats(){return _backseats;}
 
     private final int _rndspectators = (int) (Math.random()*72);
-    //private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
-    //public int getRndspectators(){return _rndspectators;}
+    // private void setRndspectators(int pRndspectators){_rndspectators = pRndspectators;}
+    // public int getRndspectators(){return _rndspectators;}
 
     private String[][] _frontseats = new String[8][9];
     private void setFrontseats(String[][] pFrontseats){_frontseats = pFrontseats;}
-    //public String[][] getFrontseats(){return _frontseats;}
+    // public String[][] getFrontseats(){return _frontseats;}
 
     public String[][] FrontseatsFill(){
         String[][] strJokerArray = new String[8][9];
@@ -43,23 +43,21 @@ public class CinemaRoom {
     }
     private char Switch(char iMainNum){
         switch (iMainNum){
-            case 0: iMainNum = 'A'; break;// A
-            case 1: iMainNum = 'B'; break;// B
-            case 2: iMainNum = 'C'; break;// C
-            case 3: iMainNum = 'D'; break;// D
-            case 4: iMainNum = 'E'; break;// E
-            case 5: iMainNum = 'F'; break;// F
-            case 6: iMainNum = 'G'; break;// G
-            case 7: iMainNum = 'H'; break;// H
-            case 8: iMainNum = 'I'; break;// I
+            case 0:iMainNum = 'A'; break;// A
+            case 1:iMainNum = 'B'; break;// B
+            case 2:iMainNum = 'C'; break;// C
+            case 3:iMainNum = 'D'; break;// D
+            case 4:iMainNum = 'E'; break;// E
+            case 5:iMainNum = 'F'; break;// F
+            case 6:iMainNum = 'G'; break;// G
+            case 7:iMainNum = 'H'; break;// H
+            case 8:iMainNum = 'I'; break;// I
         }
         return iMainNum;
     }
 
     public boolean[][] FillSeats(){
         Spectator[] mainSpectatorArray = SpectatorsCreation();
-
-        int iTestCount = 0;
 
         for (int iCountNum = 0; iCountNum<_rndspectators; iCountNum++){
             int iPos;
@@ -84,9 +82,9 @@ public class CinemaRoom {
                 } while (bOccupied);
             }
 
-            else if (bAge && bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement and they didn't have enough money to buy the entry\n"); iTestCount++;}
-            else if (bAge) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement\n"); iTestCount++;}
-            else if (bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't have enough money to buy the entry\n"); iTestCount++;}
+            else if (bAge && bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement and they didn't have enough money to buy the entry\n");}
+            else if (bAge) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't meet the minimum age requirement\n");}
+            else if (bMoney) {System.out.println(mainSpectatorArray[iCountNum] + "couldn't enter because they didn't have enough money to buy the entry\n");}
         }
         return _backseats;
     }
